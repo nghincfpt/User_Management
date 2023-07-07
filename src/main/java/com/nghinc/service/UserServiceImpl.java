@@ -1,6 +1,7 @@
 package com.nghinc.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.nghinc.model.User;
@@ -11,10 +12,17 @@ public class UserServiceImpl  implements UsersService{
 	@Autowired
 	private UserRepository userRepository;
 	
+	@Autowired
+	private BCryptPasswordEncoder passwordEncoder;
+	
+	
 	@Override
 	public User createUser(User user) {
 	
-	return userRepository.save(user);
+		user.setPassword(passwordEncoder.encode(user.getPassword()));
+	user.setRole("ROLE_USER");
+		
+		return userRepository.save(user);
 	}
 
 	@Override
