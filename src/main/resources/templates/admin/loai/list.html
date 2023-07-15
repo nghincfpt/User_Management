@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+
+</head>
+<body>
+
+	<section>
+
+		<div class="container col  mt-4">
+			<div class="card">
+				<div class="card-header">
+					<h2>List of categoryes</h2>
+				</div>
+		  <form th:action="@{/admin/loai/search}">
+                <div class="form-inline float-left">
+                  <label for="ten">Name:</label>
+                  <input type="text" class="form-control ml-2" name="ten" id="ten" aria-describedby="helpId"
+                    placeholder="name">
+                  <button class="btn btn-outline-primary ml-2">Search</button>
+                </div>
+              </form>
+				<div>
+					<a th:href="@{/admin/loai/saveOrEdit}">ADD</a>
+				</div>
+				<div th:if="@{message !=null}" class="alert alert-primary"
+						role="alert">
+						<i>[[${message}]]</i>
+					</div>
+				<div class="card-body">
+					<table class="table table-striped table-inverse ">
+						<thead class="thead-inverse">
+							<tr>
+								<th>Category ID</th>
+								<th>Name</th>
+								<th></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="o:${loais}">
+								<th>[[${o.loaiID}]]</th>
+								<th th:text="${o.ten}"></th>
+								
+								<th>
+								  <a th:href="@{'/admin/loai/edit/'+${o.loaiID}}">
+								  <i class="fas fa-edit">edit</i>
+								  </a>
+					   
+								   <a th:href="@{'/admin/loai/delete/'+${o.loaiID}}"> 
+								   <i class="fas fa-delete">Delete</i>
+								   </a>
+								   
+								</th>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>

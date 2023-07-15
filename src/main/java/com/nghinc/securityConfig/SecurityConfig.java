@@ -12,6 +12,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
+
+
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
@@ -50,9 +52,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //	 http.authorizeHttpRequests()
 //	 .antMatchers("/admin/**").hasRole("ADMIN")
 //	 .antMatchers("/user/**").hasRole("USER")
-//	.antMatchers("/teacher/**").access("hasRole('ROLE_TEACHER')")
+//	 .antMatchers("/teacher/**").hasRole("TEACHER")
+//	 .antMatchers("/oauth2/**").permitAll()
 //	 .antMatchers("/**").permitAll().and().formLogin().loginPage("/signin").loginProcessingUrl("/login")
-//	 .defaultSuccessUrl("/user/").and().csrf().disable();
+//	 .successHandler(customSuccessHandler).and().csrf().disable();
 //	}
 
 
@@ -62,9 +65,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	 .antMatchers("/admin/**").hasRole("ADMIN")
 	 .antMatchers("/user/**").hasRole("USER")
 	 .antMatchers("/teacher/**").hasRole("TEACHER")
-	 .antMatchers("/**").permitAll().and().formLogin().loginPage("/signin").loginProcessingUrl("/login")
+//	 .antMatchers("/oauth2/**").hasRole("USER")
+	 .antMatchers("/**").permitAll()
+//	 .and().oauth2Login().loginPage("/signin").userInfoEndpoint().userService(oauth2UserService)
+//	 .and().defaultSuccessUrl("/user/")
+	 .and().formLogin().loginPage("/signin").loginProcessingUrl("/login")
 	 .successHandler(customSuccessHandler).and().csrf().disable();
 	}
 	
-	
+//	// Login Google
+//	@Autowired
+//	private UserOauth2UserService oauth2UserService;
+//	
 }

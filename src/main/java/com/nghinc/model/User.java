@@ -1,9 +1,14 @@
 package com.nghinc.model;
 
+import java.util.Set;
+
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 import lombok.Data;
 
@@ -20,4 +25,10 @@ public class User {
 	private String password;
 	private String role;
 	private String resetPasswordToken;
+	
+	@Enumerated(EnumType.STRING)
+	private AuthenticationProvider authProvider;
+	
+	@OneToMany(mappedBy = "user")
+	private Set<DatHang> datHang;
 }

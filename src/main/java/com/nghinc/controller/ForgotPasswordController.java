@@ -73,7 +73,7 @@ public class ForgotPasswordController {
 		 MimeMessage message = mailSender.createMimeMessage();              
 		    MimeMessageHelper helper = new MimeMessageHelper(message);
 		    
-		   helper.setFrom("Nghincpd05001@fpt.edu.vn","Nghinc Support");
+		   helper.setFrom("Nghinc2pd05001@fpt.edu.vn","Nghinc Support");
 		   helper.setTo(email);  
 		   
 		    String subject = "Here's the link to reset your password";
