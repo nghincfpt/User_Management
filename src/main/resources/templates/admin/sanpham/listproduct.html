@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<section>
+		<div class="card-body">
+		<div ><a th:href="@{/admin/sanpham/add}">ADD</a></div>
+			<table class="table table-striped table-inverse ">
+				<thead class="thead-inverse">
+					<tr>
+						<th><input type="checkbox" class="form-check-input"></th>
+						<th>#</th>
+						<th>Hinh</th>
+						<th>Tên</th>
+						<th>Giá</th>
+						<th>Giảm %</th>
+						<th>Số Lượng</th>
+						<th>Trang Thái</th>
+						<th>Màu</th>
+						<th>Kiểu SP</th>
+						<th>Giá Ban Đầu</th>
+						<th>Loại</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="o:${products}">
+					 <th><input type="checkbox" class="form-check-inline" ></th>
+						<th>[[${o.sanPhamID}]]</th>
+					
+						<th th:text="${o.hinh}"></th>
+						<th th:text="${o.ten}"></th>
+						<th th:text="${o.gia}"></th>
+						<th th:text="${o.giamPhanTram}"></th>
+						<th th:text="${o.soLuong}"></th>
+						<th th:text="${o.trangThai}"></th>
+						<th th:text="${o.mau}"></th>
+						<th th:text="${o.kieuSP}"></th>
+						<th th:text="${o.giaBanDau}"></th>
+						<th th:text="${o.loai.ten}"></th>
+
+						<!-- 						<th><a th:href="@{'/admin/loai/edit/'+${o.loaiID}}"> <i -->
+						<!-- 								class="fas fa-edit">edit</i> -->
+						<!-- 						</a> <a th:href="@{'/admin/loai/delete/'+${o.loaiID}}"> <i -->
+						<!-- 								class="fas fa-delete">Delete</i> -->
+						<!-- 						</a></th> -->
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</section>
+</body>
+</html>

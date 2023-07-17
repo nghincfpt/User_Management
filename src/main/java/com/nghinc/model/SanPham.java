@@ -25,18 +25,18 @@ import lombok.NoArgsConstructor;
 public class SanPham {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long sapPhamID;
+	private Long sanPhamID;
 
-	@Column(name="ten",length=50,columnDefinition = "nvarchar(100) null")
+	@Column(name="ten")
 	private String ten;
 	@Column(name="gia")
-	private float gia;
+	private Float gia;
 	@Column(name="giamPhanTram")
-	private float giamPhanTram;
+	private Float giamPhanTram;
 	@Column(name="soLuong")
-	private int soLuong;
+	private Integer soLuong;
 	@Column(name="trangThai")
-	private String TrangThai;
+	private String trangThai;
 	@Column(name="hinh")
 	private String hinh;
 	@Column(name="soSao")
@@ -45,8 +45,11 @@ public class SanPham {
 	private String soDanhGia;
 	@Column(name="mau")
 	private String mau;
+	
+	
 	@Column(name="kieusp")
-	private boolean kieuSP;
+	private String kieuSP;
+	
 	@Column(name="giaBanDau")
 	private String giaBanDau;
 	

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="base::layout(~{::section})">
+<head>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+</head>
+<body>
+    <section>
+        <div class="container shadow-lg p-3 mb-5 mt-4 bg-white rounded">
+            <form>
+                <div class="form-row">
+                    <div class="form-group col-md-8">
+                        <label for="ten">Name <span style="color: red">*</span></label>
+                        <input type="text" class="form-control" id="ten" name="ten" placeholder="Name...">
+                        
+                        <label for="gia">Gia <span style="color: red">*</span></label>
+                        <input type="text" class="form-control" id="gia" name="gia" placeholder="Gia...">
+                        
+                        <label for="giamPhanTram">Giảm giá <span style="color: red">*</span></label>
+                        <input type="text" class="form-control" id="giamPhanTram" name="giamPhanTram" placeholder="Giảm giá...">
+                        
+                        <label for="soLuong">soLuong <span style="color: red">*</span></label>
+                        <input type="text" class="form-control" id="soLuong" name="soLuong" placeholder="Số lượng...">
+                        
+                        <label for="trangThai">Trạng Thái</label>
+                        <input type="text" class="form-control" id="trangThai" name="trangThai" placeholder="Trạng thái..">
+                        
+                        <label for="loai">Loại <span style="color: red">*</span></label>
+                        <select class="form-control" id="loai" name="loai">
+                            <option value="">-- Chọn loại sản phẩm --</option>
+                            <option th:each="loai : ${listLoai}" th:value="${loai.id}" th:text="${loai.tenLoai}"></option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <div class="form-group">
+                            <label for="hinh">Image file</label>
+                            <input type="file" class="form-control-file" id="hinh" name="hinh" placeholder="Product Image" aria-describedby="productimage">
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">THÊM</button>
+            </form>
+        </div>
+    </section>
+</body>
+</html>
